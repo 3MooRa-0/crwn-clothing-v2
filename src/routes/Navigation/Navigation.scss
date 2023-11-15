@@ -1,0 +1,24 @@
+@use "../../scss/util/" as u;
+
+.nav {
+  position: relative;
+
+  .logo {
+    margin-right: auto;
+  }
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__item {
+    cursor: pointer;
+    margin-left: u.rem(20);
+    transition: 250ms;
+  }
+
+  &__item:hover a {
+    color: rgb(60, 50, 50);
+  }
+}

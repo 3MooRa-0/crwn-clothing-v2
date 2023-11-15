@@ -1,0 +1,82 @@
+@use "./scss/util/" as u;
+@use "./scss/globals/variables" as v;
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font: inherit;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: v.$bodyFont;
+  text-rendering: optimizeSpeed;
+  line-height: 1.2;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
+}
+
+ul,
+ul[role="list"],
+ol[role="list"] {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+img,
+picture,
+svg {
+  max-width: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html:focus-within {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+.wrapper {
+  width: calc(100% - 2rem);
+  max-width: u.rem(1240);
+  margin-inline: auto;
+  padding-block: u.rem(40);
+
+  @include u.breakpoint-min(small) {
+    width: calc(100% - 3.75rem);
+  }
+}
