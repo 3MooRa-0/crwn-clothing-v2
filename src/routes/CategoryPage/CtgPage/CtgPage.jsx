@@ -23,7 +23,7 @@ const CtgPage = () => {
   }, [categoriesMap, category]);
 
   return (
-    <>
+    <div className="wrapper">
       <PageTitle>{category}</PageTitle>
       {isLoading ? (
         <Spinner />
@@ -39,7 +39,7 @@ const CtgPage = () => {
             })}
         </CategoryPageContainer>
       )}
-    </>
+    </div>
   );
 };
 

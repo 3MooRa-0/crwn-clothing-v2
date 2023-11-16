@@ -48,7 +48,7 @@ const PaymentForm = () => {
     setisProcessingPayment(false);
 
     if (paymentResult.error) {
-      alert(paymentResult.error);
+      alert(paymentResult.error.message);
     } else {
       if (paymentResult.paymentIntent.status === "succeeded") {
         alert("payment successful");
@@ -64,7 +64,7 @@ const PaymentForm = () => {
         <CardElement />
 
         <Button
-          disabled={isProcessingPayment}
+          isLoading={isProcessingPayment}
           buttonType={BUTTON_TYPE_CLASSES.inverted}
         >
           Pay now
