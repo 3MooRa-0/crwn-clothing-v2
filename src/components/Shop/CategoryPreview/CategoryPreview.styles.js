@@ -1,13 +1,11 @@
 import styled from "styled-components";
 
 export const PerviewContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin-block: 30px;
-
   .arrow {
     margin-left: 10px;
   }
+
+  margin-bottom: 40px;
 `;
 
 export const CategoryHeader = styled.div`
@@ -25,6 +23,12 @@ export const PreviewBox = styled.div`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 30px;
   margin-top: 20px;
+
+  @media screen and (max-width: 800px) {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+    row-gap: 25px;
+  }
 `;
 
 export const CollectionHolder = styled.div`

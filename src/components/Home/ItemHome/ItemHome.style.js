@@ -30,6 +30,10 @@ export const BodyContainer = styled.div`
     font-weight: lighter;
     font-size: 16px;
   }
+
+  @media screen and (max-width: 800px) {
+    padding: 10px;
+  }
 `;
 
 export const CategoryContainer = styled.div`
@@ -66,5 +70,10 @@ export const CategoryContainer = styled.div`
 
   &:last-child {
     margin-left: 7.5px;
+  }
+
+  @media screen and (max-width: 800px) {
+    height: 200px;
+    min-width: 40%;
   }
 `;
