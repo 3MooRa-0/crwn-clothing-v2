@@ -4,12 +4,19 @@ import Button from "../../global/Button/Button";
 import CartItem from "../CartItem/CartItem";
 
 //redux related
-import { selectCartItems } from "../../../store/cart/cart.selector";
-import { useSelector } from "react-redux";
+import {
+  selectCartItems,
+  selectIsClicked,
+} from "../../../store/cart/cart.selector";
+import { useDispatch, useSelector } from "react-redux";
+import { setClicked } from "../../../store/cart/cart.action";
 
 import { CartDropdown, EmptyMessage, ItemCart } from "./DropMenu.styles";
 const DropMenu = () => {
+  const dispatch = useDispatch();
   const cartItems = useSelector(selectCartItems);
+  const isOpen = useSelector(selectIsClicked);
+  const handleCartClick = () => dispatch(setClicked(!isOpen));
 
   return (
     <CartDropdown>
@@ -21,7 +28,7 @@ const DropMenu = () => {
         )}
       </ItemCart>
       <Link to="/checkout">
-        <Button>GO TO CHECKOUT</Button>
+        <Button onClick={handleCartClick}>GO TO CHECKOUT</Button>
       </Link>
     </CartDropdown>
   );

@@ -28,6 +28,14 @@ export const HeaderBlock = styled.div`
   &:last-child {
     width: 8%;
   }
+
+  span {
+    margin-inline: 5px;
+  }
+
+  @media screen and (max-width: 800px) {
+    display: none;
+  }
 `;
 export const CheckoutTotal = styled.div`
   margin-top: 30px;
