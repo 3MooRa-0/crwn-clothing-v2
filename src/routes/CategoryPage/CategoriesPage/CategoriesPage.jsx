@@ -13,7 +13,7 @@ const CategoriesPage = () => {
   const isLoading = useSelector(selectCategoriesLoading);
 
   return (
-    <div className="shop wrapper">
+    <div className="wrapper">
       {isLoading ? (
         <Spinner />
       ) : (

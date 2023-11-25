@@ -30,7 +30,7 @@ export const HeaderBlock = styled.div`
   }
 
   span {
-    margin-inline: 5px;
+    margin-inline: 0.5rem;
   }
 
   @media screen and (max-width: 800px) {
