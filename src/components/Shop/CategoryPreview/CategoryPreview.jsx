@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ProductCard from "../ProductCard/ProductCard";
 import { ReactComponent as Arrow } from "../../../assets/images/arrow.svg";
+import { useDispatch } from "react-redux";
 
 import {
   CategoryHeader,
@@ -9,8 +10,13 @@ import {
   PerviewContainer,
   PreviewBox,
 } from "./CategoryPreview.styles";
+import { setClicked } from "../../../store/cart/cart.action";
 
 const CategoryPreview = ({ title, products }) => {
+  const dispatch = useDispatch();
+
+  const handleCartClick = () => dispatch(setClicked(false));
+
   return (
     <PerviewContainer>
       <CategoryHeader>
@@ -20,7 +26,7 @@ const CategoryPreview = ({ title, products }) => {
         </CategoryTitle>
         <Link to={title}>
           <CollectionHolder>
-            <p>Go to collection</p>
+            <p onClick={handleCartClick}>Go to collection</p>
             <Arrow className="arrow" />
           </CollectionHolder>
         </Link>

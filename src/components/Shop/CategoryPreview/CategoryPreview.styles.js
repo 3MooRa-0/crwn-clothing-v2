@@ -21,7 +21,8 @@ export const CategoryTitle = styled.h2`
 export const PreviewBox = styled.div`
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 30px;
+  column-gap: 20px;
+  row-gap: 50px;
   margin-top: 20px;
 
   @media screen and (max-width: 800px) {

@@ -11,13 +11,19 @@ import { selectCurrentUser } from "../../store/user/user.selector";
 //redux related
 import { selectIsClicked } from "../../store/cart/cart.selector";
 import { signOutStart } from "../../store/user/user.action";
+import { setClicked } from "../../store/cart/cart.action";
 
 const Nav = () => {
   const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
   const isOpen = useSelector(selectIsClicked);
 
-  const signOutUser = () => dispatch(signOutStart());
+  const handleCartClick = () => dispatch(setClicked(false));
+
+  const signOutUser = () => {
+    dispatch(setClicked(false));
+    dispatch(signOutStart());
+  };
 
   return (
     <>
@@ -26,15 +32,19 @@ const Nav = () => {
           <ul className="nav__list">
             <li className="nav__item logo">
               <Link to="/">
-                <Logo aria-label="Logo" />
+                <Logo aria-label="Logo" onClick={handleCartClick} />
               </Link>
             </li>
             <li className="nav__item">
-              <Link to="/shop">SHOP</Link>
+              <Link to="/shop" onClick={handleCartClick}>
+                SHOP
+              </Link>
             </li>
             <li className="nav__item">
               {!currentUser ? (
-                <Link to="/auth">SIGN IN</Link>
+                <Link to="/auth" onClick={handleCartClick}>
+                  SIGN IN
+                </Link>
               ) : (
                 <span onClick={signOutUser}>SIGN OUT</span>
               )}

@@ -15,8 +15,7 @@ export const CategoryPageContainer = styled.div`
 
 export const PageTitle = styled.div`
   text-align: center;
-  font-size: 24px;
+  font-size: 28px;
   text-transform: uppercase;
-  font-weight: bold;
   margin-block: 10px;
 `;
