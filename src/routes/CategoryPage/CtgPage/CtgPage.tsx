@@ -1,0 +1,52 @@
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+
+import { CategoryPageContainer, PageTitle } from "./CtgPage.styles";
+import ProductCard from "../../../components/Shop/ProductCard/ProductCard";
+import Spinner from "../../../components/global/Spinner/Spinner";
+
+import {
+  selectCategoriesMap,
+  selectCategoriesLoading,
+} from "../../../store/categories/categories.selector";
+import { useSelector } from "react-redux";
+
+type CategoryRouteParams = {
+  category: string;
+};
+
+const CtgPage = () => {
+  const { category } = useParams<
+    keyof CategoryRouteParams
+  >() as CategoryRouteParams;
+  const categoriesMap = useSelector(selectCategoriesMap);
+  const isLoading = useSelector(selectCategoriesLoading);
+
+  const [products, setProducts] = useState(categoriesMap[category]);
+
+  useEffect(() => {
+    setProducts(categoriesMap[category]);
+  }, [categoriesMap, category]);
+
+  return (
+    <div className="wrapper">
+      <PageTitle>{category}</PageTitle>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <CategoryPageContainer>
+          {products &&
+            products.map((product) => {
+              return (
+                <div key={product.id}>
+                  <ProductCard product={product} />
+                </div>
+              );
+            })}
+        </CategoryPageContainer>
+      )}
+    </div>
+  );
+};
+
+export default CtgPage;
