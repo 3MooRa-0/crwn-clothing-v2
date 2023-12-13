@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import FormInput from "../FormInput/FormInput";
 import Button from "../../global/Button/Button";
 
 import { SignupContainer, SignTitle, SignText } from "./SignUpForm.styels";
 import { useDispatch } from "react-redux";
-import { signUpStart } from "../../../store/user/user.action";
+import { signUpStart, singUpSuccess } from "../../../store/user/user.action";
 
 const defaultFormFields = {
   displayName: "",
@@ -15,6 +16,7 @@ const defaultFormFields = {
 };
 
 const SignUpForm = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { displayName, email, password, confirmPassword } = formFields;
@@ -35,9 +37,14 @@ const SignUpForm = () => {
     if (password !== confirmPassword) {
       return alert("Passwords do not match");
     }
-    console.log("done");
+    if (password.length < 6) {
+      return alert("Weak Password, try again");
+    }
     try {
       dispatch(signUpStart(email, password, displayName));
+      if (singUpSuccess) {
+        navigate("/");
+      }
       resetFormFields();
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {

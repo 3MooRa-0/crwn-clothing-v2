@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 import Button, { BUTTON_TYPE_CLASSES } from "../../global/Button/Button";
 import FormInput from "../FormInput/FormInput";
@@ -13,6 +14,7 @@ import {
 import {
   emailSignInStart,
   googleSignInStart,
+  signInSuccess,
 } from "../../../store/user/user.action";
 
 const defaultFormFields = {
@@ -21,6 +23,7 @@ const defaultFormFields = {
 };
 
 const SignInForm = () => {
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [formFields, setFormFields] = useState(defaultFormFields);
   const { email, password } = formFields;
@@ -37,13 +40,18 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     dispatch(googleSignInStart());
+    if (signInSuccess) {
+      navigate("/");
+    }
   };
 
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
       dispatch(emailSignInStart(email, password));
-
+      if (signInSuccess) {
+        navigate("/");
+      }
       resetFormFields();
     } catch (error) {
       window.alert("Incorrect email or password");
