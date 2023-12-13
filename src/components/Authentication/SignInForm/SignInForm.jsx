@@ -40,8 +40,11 @@ const SignInForm = () => {
 
   const signInWithGoogle = async () => {
     dispatch(googleSignInStart());
+
     if (signInSuccess) {
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 10000);
     }
   };
 
