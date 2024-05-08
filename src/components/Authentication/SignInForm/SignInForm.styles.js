@@ -4,6 +4,7 @@ export const SignContainer = styled.div`
   display: flex;
   flex-direction: column;
   width: 380px;
+  margin-top: 50px;
 
   h2 {
     margin: 10px 0;
@@ -11,7 +12,7 @@ export const SignContainer = styled.div`
 `;
 export const ButtonsContainer = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   gap: 15px;
 `;
 export const SignTitle = styled.h2`
@@ -20,5 +21,4 @@ export const SignTitle = styled.h2`
 export const SignText = styled.h3`
   font-size: 24px;
   font-weight: bold;
-  margin-top: 20px;
 `;

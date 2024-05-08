@@ -12,6 +12,7 @@ import { selectCurrentUser } from "../../store/user/user.selector";
 import { selectIsClicked } from "../../store/cart/cart.selector";
 import { signOutStart } from "../../store/user/user.action";
 import { setClicked } from "../../store/cart/cart.action";
+import Footer from "../Footer";
 
 const Nav = () => {
   const dispatch = useDispatch();
@@ -58,6 +59,7 @@ const Nav = () => {
       </div>
 
       <Outlet />
+      <Footer />
     </>
   );
 };

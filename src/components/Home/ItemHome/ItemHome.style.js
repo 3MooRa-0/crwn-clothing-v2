@@ -37,8 +37,8 @@ export const BodyContainer = styled.div`
 `;
 
 export const CategoryContainer = styled.div`
-  min-width: 30%;
-  height: 240px;
+  min-width: 35%;
+  height: 280px;
   flex: 1 1 auto;
   display: flex;
   align-items: center;

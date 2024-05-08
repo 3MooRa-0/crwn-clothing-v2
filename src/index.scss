@@ -74,7 +74,7 @@ svg {
   width: calc(100% - 2rem);
   max-width: u.rem(1240);
   margin-inline: auto;
-  padding-block: u.rem(40);
+  padding-block: u.rem(24);
 
   @include u.breakpoint-min(small) {
     width: calc(100% - 3.75rem);
